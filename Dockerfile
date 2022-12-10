@@ -6,7 +6,7 @@ WORKDIR /code
 
 COPY pyproject.toml /code/
 COPY poetry.lock /code/
-RUN poetry config virtualenvs.create false && poetry install --no-dev --no-interaction --no-ansi
+RUN poetry config virtualenvs.create false && poetry install --no-dev --no-interaction --no-ansi --no-root
 
 COPY . .
 
