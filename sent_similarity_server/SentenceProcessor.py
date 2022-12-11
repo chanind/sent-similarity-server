@@ -20,7 +20,7 @@ class SentenceProcessor:
 
     def __init__(self) -> None:
         self.zh_splitter = StnSplit()
-        self.en_splitter = spacy.load("en_core_web_sm")
+        self.en_splitter = spacy.load("xx_sent_ud_sm")
         self.encoder = SentenceTransformer(SENT_TRANSFORMER_MODEL)
 
     def split_sentences(self, text: str) -> list[str]:
