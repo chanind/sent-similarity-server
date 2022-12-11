@@ -57,16 +57,16 @@ def encode_sentences() -> dict[str, Any]:
             400,
             {
                 "type": "invalid_params",
-                "message": 'You must post a JSON body with a "sentences" param',
+                "message": 'You must post a JSON body with a "paragraphs" param',
             },
         )
-    sentences = json_data.get("sentences")
-    if sentences is None or len(sentences) == 0:
+    paragraphs = json_data.get("paragraphs")
+    if paragraphs is None or len(paragraphs) == 0:
         abort(
             400,
             {
                 "type": "invalid_params",
-                "message": 'You must post a "sentences" param',
+                "message": 'You must post a "paragraphs" param',
             },
         )
-    return {"results": {"embeddings": processor.encode_sentences(sentences).tolist()}}
+    return {"results": {"embeddings": [processor.encode_sentences(sentences).tolist() for sentences in paragraphs]}}
